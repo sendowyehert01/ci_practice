@@ -1,4 +1,5 @@
 <?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends CI_Controller {
 
@@ -28,7 +29,9 @@ class Users extends CI_Controller {
                 );
                 $this->session->set_userdata($user_data);
                 $this->session->set_flashdata('login_success', 'You are now logged in!');
-                redirect('home/index');
+                $data['main_view'] = 'admin_view';
+		            $this->load->view('layouts/main', $data);
+                //redirect('home/index');
             } else {
                 $this->session->set_flashdata('login_failed', 'Sorry! You are not logged in!');
                 redirect('home/index');
@@ -39,6 +42,27 @@ class Users extends CI_Controller {
     public function logout() {
         $this->session->sess_destroy();
         redirect('home/index');
+    }
+    
+    public function register() {
+      
+       $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]');
+        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|min_length[3]|matches[password]');
+       $this->form_validation->set_rules('first_name', 'First', 'trim|required|max_length[50]');
+        $this->form_validation->set_rules('last_name', 'Lastname', 'trim|required|max_length[50]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|max_length[50]');
+        
+        if ($this->form_validation->run() == FALSE) {
+           $data['main_view'] = 'users/register_view';
+           $this->load->view('layouts/main', $data);
+        } else {
+            if ($this->user_model->register_user()) {
+              redirect('home/index');
+            } else {
+              redirect('https://facebook.com');
+            }
+    }
     }
 
     // public function show($user_id) {

@@ -14,6 +14,20 @@ class User_model extends CI_Model {
             return false;
         }
     }
+    
+    public function register_user() {
+            
+            $data = array(
+              'username' => $this->input->post('username'),
+              'password' => $this->input->post('password'),
+              'first_name' => $this->input->post('first_name'),
+              'last_name' => $this->input->post('last_name'),
+              'email' =>  $this->input->post('email')
+              );
+      
+        $result = $this->db->insert('users', $data);
+        return $result;
+    }
 
     // public function get_users($user_id) {
     //     $this->db->where('id', $user_id);
