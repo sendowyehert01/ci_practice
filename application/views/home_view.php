@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Sendo Pogi!</h1>
-</body>
-</html>
+<p class="bg-success">
+    <?php if($this->session->flashdata('login_success')): ?> 
+        <?php  echo $this->session->flashdata('login_success');?>
+    <?php endif; ?>
+</p>
+<p class="bg-danger">
+    <?php if($this->session->flashdata('login_failed')): ?> 
+        <?php  echo $this->session->flashdata('login_failed');?>
+    <?php endif; ?>
+</p>
+
+<h1>Sendo Pogi</h1>

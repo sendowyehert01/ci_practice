@@ -7,10 +7,10 @@
 </head>
 <body>
     <?php 
-        // foreach ($results as $obj) {
-        //     echo $obj->username . '<br>';
-        // }
-        echo $results;
+        foreach ($results as $obj) {
+            echo $obj->username . '<br>';
+        }
+        // echo $results;
     ?>
 </body>
 </html>
