@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('logged_in')): ?>
+<?php if(($this->session->userdata('logged_in'))): ?>
     
     <h2>Logout!</h2>
     <p><?php echo 'Welcome ' . $this->session->userdata('username') ?></p>
