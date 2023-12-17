@@ -58,6 +58,8 @@ class Users extends CI_Controller {
            $this->load->view('layouts/main', $data);
         } else {
             if ($this->user_model->register_user()) {
+              
+              $this->session->set_flashdata('register_user', 'An user is Registered!');
               redirect('home/index');
             } else {
               redirect('https://facebook.com');
