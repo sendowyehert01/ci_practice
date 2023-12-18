@@ -1,5 +1,5 @@
 <div class="col-xs-9">
-    <h1>Projects ni Sendo</h1>
+    <h1><?php echo $projects->project_name;?></h1>
 </div>
 
 <div class="col-xs-3 pull-right">

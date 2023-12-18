@@ -10,7 +10,7 @@
   <tbody>
     <?php foreach ($projects as $obj): ?>
     <tr>
-      <?php echo "<td><a href='" . base_url() . "projects/display'>" . $obj->project_name . "</a></td>
+      <?php echo "<td><a href='" . base_url() . "projects/display/". $obj->id ."'>" . $obj->project_name . "</a></td>
       <td>" . $obj->project_body . "</td>"; ?>
     </tr>
     <?php endforeach; ?>
