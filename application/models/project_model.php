@@ -38,6 +38,13 @@ class Project_model extends CI_Model {
         $this->db->delete('projects');
     }
     
+    public function get_all_projects($user_id) 
+      {
+      $this->db->where('project_user_id', $user_id);
+      $query = $this->db->get('projects');
+      return $query->result();
+      }
+    
 //     $this->db->where('id', $user_id);
 //     $query = $this->db->get('users');
 //     return $query->result();

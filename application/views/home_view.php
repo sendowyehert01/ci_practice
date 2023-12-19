@@ -15,4 +15,27 @@
     <?php endif; ?>
 </p>
 
-<h1>Sendo Pogi</h1>
+<div class="jumbotron">
+  <h3 class='text-center'>Welcome to Sendo APP</h3>
+</div>
+
+<?php if(isset($projects)): ?>
+<h1>Projects</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>Project Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($projects as $obj): ?>
+    <tr>
+      <td><?php echo $obj->project_name ?></td>
+      <td><?php echo $obj->project_body ?></td>
+      <td><a href="<?php echo base_url(); ?>projects/display/<?php echo $obj->id; ?>">View</a></td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+<?php endif; ?>
