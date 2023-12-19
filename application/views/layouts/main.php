@@ -28,6 +28,9 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="/ci_practice/home">Home<span class="sr-only">(current)</span></a></li>
         <li><a href="/ci_practice/users/register">Register</a></li>
+        <?php if($this->session->userdata('logged_in')): ?>
+          <li><a href="/ci_practice/projects">Projects</a></li>
+        <?php endif; ?>
       </ul>
       <?php if($this->session->userdata('logged_in')): ?>
         <ul class="nav navbar-nav navbar-right">

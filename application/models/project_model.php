@@ -20,6 +20,24 @@ class Project_model extends CI_Model {
         $insert_project = $this->db->insert('projects', $data);
         return $insert_project;
       }
+
+      public function edit_project($project_id, $data) {
+        $this->db->where(['id' => $project_id]);
+        $this->db->update('projects', $data);
+        return true;
+     }  
+
+     public function get_project_data($project_id) {
+        $this->db->where('id', $project_id);
+        $query_data = $this->db->get('projects');
+        return $query_data->row();
+     }
+
+    public function delete_project($project_id) {
+        $this->db->where(['id' => $project_id]);
+        $this->db->delete('projects');
+    }
+    
 //     $this->db->where('id', $user_id);
 //     $query = $this->db->get('users');
 //     return $query->result();
