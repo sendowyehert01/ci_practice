@@ -14,6 +14,12 @@ class Project_model extends CI_Model {
       $query = $this->db->query('SELECT * FROM projects');
       return $query->result();
       }
+      
+      public function create_project($data)
+      {
+        $insert_project = $this->db->insert('projects', $data);
+        return $insert_project;
+      }
 //     $this->db->where('id', $user_id);
 //     $query = $this->db->get('users');
 //     return $query->result();

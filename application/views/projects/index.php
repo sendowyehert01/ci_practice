@@ -1,5 +1,7 @@
 <h1>All Projects</h1>
 
+<a class="btn btn-primary pull-right" href="<?php echo base_url(); ?>projects/create">Create Project</a>
+
 <table class="table">
   <thead>
     <tr>
