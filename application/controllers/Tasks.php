@@ -32,5 +32,30 @@ class Tasks extends CI_Controller {
                 }
             }
     }
+
+    public function edit($task_id)
+    {
+          $this->form_validation->set_rules('task_name', 'Task Name', 'trim|required');
+          $this->form_validation->set_rules('task_body', 'Task Desctiption', 'trim|required');
+          
+          if ($this->form_validation->run() == FALSE) 
+            {
+              $data['task_data'] = $this->task_model->get_task_data($task_id);
+              $data['main_view'] = 'tasks/edit_task';
+              $this->load->view('layouts/main', $data);
+            } else {
+              $data = Array(
+                'project_id' => $task_id,
+                'task_name' => $this->input->post('task_name'),
+                'task_body' => $this->input->post('task_body'),
+                'due_date' => $this->input->post('due_date'),
+                );
+                
+                if ($this->task_model->edit_task($task_id, $data)) {
+                  $this->session->set_flashdata('task_edited', 'Your task has been updated');
+                  redirect('projects/display');
+                }
+            }
+    }
 }
 ?>
