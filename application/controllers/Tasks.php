@@ -40,22 +40,33 @@ class Tasks extends CI_Controller {
           
           if ($this->form_validation->run() == FALSE) 
             {
+              $data['project_id'] = $this->task_model->get_task_project_id($task_id);
               $data['task_data'] = $this->task_model->get_task_data($task_id);
               $data['main_view'] = 'tasks/edit_task';
               $this->load->view('layouts/main', $data);
             } else {
+              $task_project_id = $this->task_model->get_task_project_id($task_id);
+              
               $data = Array(
-                'project_id' => $task_id,
+                'project_id' => $task_project_id,
                 'task_name' => $this->input->post('task_name'),
                 'task_body' => $this->input->post('task_body'),
                 'due_date' => $this->input->post('due_date'),
                 );
                 
                 if ($this->task_model->edit_task($task_id, $data)) {
-                  $this->session->set_flashdata('task_edited', 'Your task has been updated');
-                  redirect('projects/display');
+                  $this->session->set_flashdata('task_updated', 'Your task has been updated');
+                  redirect("projects/display/" . $task_project_id);
                 }
             }
+    }
+    
+  public function delete($project_id, $task_id) 
+    {
+          $this->task_model->delete_task($task_id);
+          $this->session->set_flashdata('task_deleted', 'Your task has been deleted');
+          redirect("projects/display/" . $project_id . " ");
+          
     }
 }
 ?>
