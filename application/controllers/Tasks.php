@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Tasks extends CI_Controller {
   
     public function display($task_id) {
+      $data['project_id'] = $this->task_model->get_task_project_id($task_id);
+      $data['project_name'] = $this->task_model->get_task_project_name($data['project_id']);
       $data['task'] = $this->task_model->get_task($task_id);
       $data['main_view'] = 'tasks/display';
       $this->load->view('layouts/main', $data);
@@ -68,5 +70,25 @@ class Tasks extends CI_Controller {
           redirect("projects/display/" . $project_id . " ");
           
     }
+   
+   public function mark_complete($task_id) 
+   {
+     if ($this->task_model->mark_complete($task_id))
+     {
+       $project_id = $this->task_model->get_task_project_id($task_id);
+       $this->session->set_flashdata('mark_done', 'Your task is marked completed!');
+       redirect("projects/display/" . $project_id);
+     }
+   }
+   
+   public function mark_incomplete($task_id) 
+   {
+     if ($this->task_model->mark_incomplete($task_id))
+     {
+       $project_id = $this->task_model->get_task_project_id($task_id);
+       $this->session->set_flashdata('mark_undone', 'Your task is incompleted!');
+       redirect("projects/display/" . $project_id);
+     }
+   }
 }
 ?>

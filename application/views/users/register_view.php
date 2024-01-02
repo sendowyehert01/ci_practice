@@ -13,6 +13,7 @@
             'class' => 'form-control',
             'name' => 'username',
             'placeholder' => 'Enter username...',
+            'value' => set_value('username')
         )
     ?>
 
@@ -26,7 +27,7 @@
             'class' => 'form-control',
             'name' => 'password',
             'placeholder' => 'Enter password...',
-            'type' => 'password'
+            'type' => 'password',
         )
     ?>
 
@@ -54,6 +55,7 @@
             'class' => 'form-control',
             'name' => 'first_name',
             'placeholder' => 'Enter firstname...',
+            'value' => set_value('first_name')
         )
     ?>
 
@@ -67,6 +69,7 @@
             'class' => 'form-control',
             'name' => 'last_name',
             'placeholder' => 'Enter lastname...',
+            'value' => set_value('last_name')
         )
     ?>
 
@@ -80,7 +83,8 @@
             'class' => 'form-control',
             'name' => 'email',
             'placeholder' => 'Enter email...',
-            'type' => 'email'
+            'type' => 'email',
+            'value' => set_value('email')
         )
     ?>
 

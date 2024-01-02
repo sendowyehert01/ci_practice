@@ -1,28 +1,18 @@
-<h1>Tasks</h1>
+<div class="col-xs-9">
+  <h1><?php echo $task->task_name; ?></h1>
+  <p>Project Name: <?php echo $project_name; ?></p>
+  <p>Created: <?php echo $task->date_created; ?></p>
+  <p>Due Date: <?php echo $task->due_date; ?></p>
+  <h3>Description</h3>
+  <p class="task-description"><?php echo $task->task_body; ?></p>
+</div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Task Name</th>
-      <th>Task Body</th>
-      <th>Date</th>
-      <th>Due Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <div class="task-name">
-          <?php echo $task->task_name ?>
-        </div>
-        <div class="task-actions">
-          <a href="<?php echo base_url(); ?>tasks/edit/<?php echo $task->id; ?>">Edit</a>
-          <a href="<?php echo base_url(); ?>tasks/delete/<?php echo $task->project_id ?>/<?php echo $task->id; ?>">Delete</a>
-        </div>
-      </td>
-      <td><?php echo $task->task_body ?></td>
-      <td><?php echo $task->date_created ?></td>
-      <td><?php echo $task->due_date ?></td>
-    </tr>
-  </tbody>
-</table>
+<div class="col-xs-3 pull-right">
+    <ul class="list-group">
+        <h3>Task Actions</h3>
+        <li class="list-group-item"><a href="<?php echo base_url(); ?>tasks/edit/<?php echo $task->id; ?>">Edit Task</a></li>
+        <li class="list-group-item"><a href="<?php echo base_url(); ?>tasks/delete/<?php echo $task->project_id ?>/<?php echo $task->id; ?>">Delete Task</a></li>
+        <li class="list-group-item"><a href="<?php echo base_url(); ?>tasks/mark_complete/<?php echo $task->id; ?>">Mark Complete</a></li>
+        <li class="list-group-item"><a href="<?php echo base_url(); ?>tasks/mark_incomplete/<?php echo $task->id; ?>">Mark Incomplete</a></li>
+    </ul>
+</div>
